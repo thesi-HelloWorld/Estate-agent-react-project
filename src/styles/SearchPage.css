@@ -1,8 +1,10 @@
+/* PAGE */
 .search-page {
   padding: 20px;
   font-family: Arial, Helvetica, sans-serif;
 }
 
+/* FILTER CONTAINER */
 .filters {
   display: flex;          
   flex-wrap: wrap;        
@@ -10,6 +12,7 @@
   margin-bottom: 20px;
 }
 
+/* EACH FILTER */
 .filter-item {
   display: flex;          
   align-items: center;
@@ -17,20 +20,63 @@
   min-width: 230px;       
 }
 
+/* INPUTS */
 .filter-item input,
 .filter-item select {
   padding: 4px 6px;
 }
 
+/* RESULTS */
 .result-card {
   border-bottom: 1px solid #ccc;
   padding: 10px 0;
 }
 
-/* Responsive adjustments */
+/* PROPERTY CARD */
+.result-card {
+  border: 1px solid #ddd;
+  background-color: #fff;
+  overflow: hidden; 
+}
+
+/* Card heading */
+.result-card h3 {
+  margin: 0;
+  font-size: 1.1em;
+}
+
+/* Price emphasis */
+.result-card p strong {
+  font-size: 1.1em;
+}
+
+/* RESULTS GRID */
+.results-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 20px;
+}
+
+/* IMAGE ON TOP */
+.property-image {
+  width: 100%;
+  height: 180px;
+  object-fit: cover; 
+  display: block;
+}
+
+/* DETAILS BELOW IMAGE */
+.property-details {
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* Responsiveness of the site */
 @media (max-width: 1024px) {
   .filters {
-    flex-direction: column;  
+    flex-direction: column;   
   }
 
   .filter-item {
