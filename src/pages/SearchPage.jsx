@@ -1,46 +1,99 @@
 import { useState } from "react";
 import propertiesData from "../data/properties.json";
+import "../styles/SearchPage.css";
 
 function SearchPage() {
-    // Setting various for filters
+    // 
   const [type, setType] = useState("");
   const [minPrice, setMinPrice] = useState("");
   const [maxPrice, setMaxPrice] = useState("");
+  const [minBeds, setMinBeds] = useState("");
+  const [maxBeds, setMaxBeds] = useState("");
+  const [postcode, setPostcode] = useState("");
+  const [year, setYear] = useState("");
 
-  // Filteration
   const filteredProperties = propertiesData.properties.filter((property) => {
+    const matchesType =
+      type === "" || property.type === type;
+
+    const matchesMinPrice =
+      minPrice === "" || property.price >= Number(minPrice);
+
+    const matchesMaxPrice =
+      maxPrice === "" || property.price <= Number(maxPrice);
+
+    const matchesMinBeds =
+      minBeds === "" || property.bedrooms >= Number(minBeds);
+
+    const matchesMaxBeds =
+      maxBeds === "" || property.bedrooms <= Number(maxBeds);
+
+    const matchesPostcode =
+      postcode === "" ||
+      property["postcode area"]
+        .toUpperCase()
+        .includes(postcode.toUpperCase());
+
+    const matchesYear =
+      year === "" || property.added.year === Number(year);
+
     return (
-      (type === "" || property.type === type) &&
-      (minPrice === "" || property.price >= Number(minPrice)) &&
-      (maxPrice === "" || property.price <= Number(maxPrice))
+        // Shows up in the browser 
+      matchesType &&
+      matchesMinPrice &&
+      matchesMaxPrice &&
+      matchesMinBeds &&
+      matchesMaxBeds &&
+      matchesPostcode &&
+      matchesYear
     );
   });
 
-  // Rendering
   return (
-    <div>
+    <div className="search-page">
       <h1>Property Search</h1>
 
-      <select value={type} onChange={(e) => setType(e.target.value)}>
-        <option value="">Any Type</option>
-        <option value="House">House</option>
-        <option value="Flat">Flat</option>
-        <option value="Townhouse">Townhouse</option>
-      </select>
+      <div className="filters">
+        <div className="filter-item"> // for responsiveness
+          <label>Type:</label>
+          <select value={type} onChange={(e) => setType(e.target.value)}>
+            <option value="">Any</option>
+            <option value="House">House</option>
+            <option value="Flat">Flat</option>
+            <option value="Townhouse">Townhouse</option>
+          </select>
+        </div>
 
-      <input
-        type="number"
-        placeholder="Min Price"
-        value={minPrice}
-        onChange={(e) => setMinPrice(e.target.value)}
-      />
+        <div className="filter-item">
+          <label>Min Price:</label>
+          <input type="number" onChange={(e) => setMinPrice(e.target.value)} />
+        </div>
 
-      <input
-        type="number"
-        placeholder="Max Price"
-        value={maxPrice}
-        onChange={(e) => setMaxPrice(e.target.value)}
-      />
+        <div className="filter-item">
+          <label>Max Price:</label>
+          <input type="number" onChange={(e) => setMaxPrice(e.target.value)} />
+        </div>
+
+        <div className="filter-item">
+          <label>Min Beds:</label>
+          <input type="number" onChange={(e) => setMinBeds(e.target.value)} />
+        </div>
+
+        <div className="filter-item">
+          <label>Max Beds:</label>
+          <input type="number" onChange={(e) => setMaxBeds(e.target.value)} />
+        </div>
+
+        <div className="filter-item">
+          <label>Postcode:</label>
+          <input type="text" onChange={(e) => setPostcode(e.target.value)} />
+        </div>
+
+        <div className="filter-item">
+          <label>Year Added:</label>
+          <input type="number" onChange={(e) => setYear(e.target.value)} />
+        </div>
+      </div>
 
       <h2>Results</h2>
 
@@ -49,11 +102,13 @@ function SearchPage() {
       )}
 
       {filteredProperties.map((property) => (
-        <div key={property.id}>
+        <div key={property.id} className="result-card">
           <h3>{property.type}</h3>
-          <p>£{property.price.toLocaleString()}</p>
+          <p><strong>£{property.price.toLocaleString()}</strong></p>
           <p>{property.bedrooms} bedrooms</p>
           <p>{property.location}</p>
+          <p>Postcode: {property["postcode area"]}</p>
+          <p>Added: {property.added.month} {property.added.year}</p>
         </div>
       ))}
     </div>
