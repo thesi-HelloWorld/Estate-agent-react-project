@@ -1,5 +1,7 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import propertiesData from "../data/properties.json";
+import FavouriteList from "../components/FavouriteList";
 import "../styles/SearchPage.css";
 
 function SearchPage() {
@@ -9,9 +11,30 @@ function SearchPage() {
   const [minBeds, setMinBeds] = useState("");
   const [maxBeds, setMaxBeds] = useState("");
   const [postcode, setPostcode] = useState("");
-  const [year, setYear] = useState("");
+  const [dateFrom, setDateFrom] = useState("");
+  const [dateTo, setDateTo] = useState("");
+  const [favourites, setFavourites] = useState([]);
+
+  useEffect(() => {
+    const stored = JSON.parse(localStorage.getItem("favourites")) || [];
+    setFavourites(stored);
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("favourites", JSON.stringify(favourites));
+  }, [favourites]);
+
+  const addFavourite = (id) => {
+    if (!favourites.includes(id)) {
+      setFavourites([...favourites, id]);
+    }
+  };
 
   const filteredProperties = propertiesData.properties.filter((property) => {
+    const addedDate = new Date(
+      `${property.added.month} ${property.added.day}, ${property.added.year}`
+    );
+
     return (
       (type === "" || property.type === type) &&
       (minPrice === "" || property.price >= Number(minPrice)) &&
@@ -22,7 +45,8 @@ function SearchPage() {
         property["postcode area"]
           .toUpperCase()
           .includes(postcode.toUpperCase())) &&
-      (year === "" || property.added.year === Number(year))
+      (dateFrom === "" || addedDate >= new Date(dateFrom)) &&
+      (dateTo === "" || addedDate <= new Date(dateTo))
     );
   });
 
@@ -30,7 +54,6 @@ function SearchPage() {
     <div className="search-page">
       <h1>Property Search</h1>
 
-      {/*filterations*/}
       <div className="filters">
         <div className="filter-item">
           <label>Type:</label>
@@ -68,42 +91,62 @@ function SearchPage() {
         </div>
 
         <div className="filter-item">
-          <label>Year Added:</label>
-          <input type="number" onChange={(e) => setYear(e.target.value)} />
+          <label>Date From:</label>
+          <input type="date" onChange={(e) => setDateFrom(e.target.value)} />
+        </div>
+
+        <div className="filter-item">
+          <label>Date To:</label>
+          <input type="date" onChange={(e) => setDateTo(e.target.value)} />
         </div>
       </div>
 
-      <h2>Results</h2>
+      <div className="content">
+        <div>
+          <h2>Results</h2>
 
-      {filteredProperties.length === 0 && (
-        <p>No properties found.</p>
-      )}
+          <div className="results-grid">
+            {filteredProperties.map((property) => (
+              <div
+                key={property.id}
+                className="result-card"
+                draggable
+                onDragStart={(e) =>
+                  e.dataTransfer.setData("propertyId", property.id)
+                }
+              >
+                <img
+                  src={property.picture}
+                  alt={property.type}
+                  className="property-image"
+                />
 
-      <div className="results-grid">
-        {filteredProperties.map((property) => (
-          <div key={property.id} className="result-card">
+                <div className="property-details">
+                  <h3>{property.type}</h3>
+                  <p className="price">
+                    £{property.price.toLocaleString()}
+                  </p>
+                  <p>{property.bedrooms} bedrooms</p>
+                  <p>{property.location}</p>
 
-            {/* Image cards */}
-            <img
-              src={property.picture}
-              alt={property.type}
-              className="property-image"
-            />
+                  <button onClick={() => addFavourite(property.id)}>
+                    <strong>Add to Favourites</strong>
+                  </button>
 
-            <div className="property-details">
-              <h3>{property.type}</h3>
-             <strong><p className="price">
-                £{property.price.toLocaleString()}
-              </p></strong> 
-              <p>{property.bedrooms} bedrooms</p>
-              <p>{property.location}</p>
-              <p>Postcode: {property["postcode area"]}</p>
-              <p>
-                Added: {property.added.month} {property.added.year}
-              </p>
-            </div>
+                  <Link to={`/property/${property.id}`}>
+                    View Details
+                  </Link>
+                </div>
+              </div>
+            ))}
           </div>
-        ))}
+        </div>
+
+        <FavouriteList
+          favourites={favourites}
+          properties={propertiesData.properties}
+          setFavourites={setFavourites}
+        />
       </div>
     </div>
   );
