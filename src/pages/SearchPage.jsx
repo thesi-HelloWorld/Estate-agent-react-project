@@ -4,6 +4,7 @@ import propertiesData from "../data/properties.json";
 import FavouriteList from "../components/FavouriteList";
 import "../styles/SearchPage.css";
 import PropertyDetails from "./PropertyDetails";
+import PropertyCard from "../components/PropertyCard";
 
 function SearchPage() {
   const [type, setType] = useState("");
@@ -102,46 +103,18 @@ function SearchPage() {
         </div>
       </div>
 
-      <div className="content">
         <div>
           <h2>Results</h2>
 
           <div className="results-grid">
             {filteredProperties.map((property) => (
-              <div
+              <PropertyCard
                 key={property.id}
-                className="result-card"
-                draggable
-                onDragStart={(e) =>
-                  e.dataTransfer.setData("propertyId", property.id)
-                }
-              >
-                <img
-                  src={property.picture}
-                  alt={property.type}
-                  className="property-image"
-                />
-
-                <div className="property-details">
-                  <h3>{property.type}</h3>
-                  <p className="price">
-                    £{property.price.toLocaleString()}
-                  </p>
-                  <p>{property.bedrooms} bedrooms</p>
-                  <p>{property.location}</p>
-
-                  <button onClick={() => addFavourite(property.id)}>
-                    <strong>Add to Favourites</strong>
-                  </button>
-
-                  <Link to={`/property/${property.id}`}>
-                    View Details
-                  </Link>
-                </div>
-              </div>
+                property={property}
+                addFavourite={addFavourite}
+              />
             ))}
-          </div>
-        </div>
+            </div>
 
         <FavouriteList
           favourites={favourites}

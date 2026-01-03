@@ -7,7 +7,13 @@
         rgba(196, 206, 224, 0.925),
         rgba(148, 183, 223, 0.925)
     );
-    min-height: 100vh;
+    min-height: 100vw
+}
+
+.property-container{
+    width:100%;
+    max-width: 900px;
+    padding:20px
 }
 
 .property-container {
@@ -32,6 +38,12 @@
     gap: 10px;
     margin-top: 15px;
     margin-bottom: 20px;
+}
+
+.floorplan{
+    display:block;
+    width: 100%;
+    max-width: 100%;
 }
 
 /* Pressable tabs */
