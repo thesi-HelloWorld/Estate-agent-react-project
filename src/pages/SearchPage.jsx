@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import propertiesData from "../data/properties.json";
 import FavouriteList from "../components/FavouriteList";
 import "../styles/SearchPage.css";
+import PropertyDetails from "./PropertyDetails";
 
 function SearchPage() {
   const [type, setType] = useState("");

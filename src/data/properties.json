@@ -10,6 +10,12 @@
 			"location":"Petts Wood Road, Petts Wood, Orpington",
             "postcode area":"BR5",
 			"picture":"images/prop1pic1small.jpg",
+            "images":[
+                "images/prop1pic1small.jpg",
+                "images/prop1pic2small.jpg",
+                "images/prop1pic3small.jpg"
+            ],
+            "floorplan":"images/prop1floorplan.jpg",
 			"url":"properties/prop1.html",
             "added": {
                 "month":"October",
@@ -27,6 +33,12 @@
 			"location":"Crofton Road Orpington",
             "postcode area":"BR6",
 			"picture":"images/prop2pic1small.jpg",
+            "images":[
+                "images/prop2pic1small.jpg",
+                "images/prop2pic2small.jpg",
+                "images/prop2pic3small.jpg"
+            ],
+            "floorplan":"images/prop2floorplan.jpg",
 			"url":"properties/prop2.html",
             "added": {
                 "month":"September",
@@ -44,6 +56,12 @@
             "location": "Rosewood Road, Orpington",
             "postcode area":"BR7",
             "picture": "images/prop4pic1small.jpg",
+            "images":[
+                "images/prop4pic1small.jpg",
+                "images/prop4pic2small.jpg",
+                "images/prop4pic3small.jpg"
+            ],
+            "floorplan":"images/prop4floorplan.jpg",
             "url": "properties/prop4.html",
             "added": {
                 "month": "February",
@@ -61,6 +79,12 @@
             "location": "Crofton Road, Orpington",
             "postcode area":"BR6",
             "picture": "images/prop5pic1small.jpg",
+            "images":[
+                "images/prop5pic1small.jpg",
+                "images/prop5pic2small.jpg",
+                "images/prop5pic3small.jpg"
+            ],
+            "floorplan":"images/prop5floorplan.jpg",
             "url": "properties/prop5.html",
             "added": {
                 "month": "May",
@@ -78,6 +102,12 @@
             "location": "Edmonton Road, Orpington",
             "postcode area":"BR4",
             "picture": "images/prop6pic1small.jpg",
+            "images":[
+                "images/prop6pic1small.jpg",
+                "images/prop6pic2small.jpg",
+                "images/prop6pic3small.jpg"
+            ],
+            "floorplan":"images/prop6floorplan.jpg",
             "url": "properties/prop6.html",
             "added": {
                 "month": "May",
@@ -95,6 +125,12 @@
             "location": "Rosewood Road, Orpington",
             "postcode area":"BR5",
             "picture": "images/prop7pic1small.jpg",
+            "images":[
+                "images/prop7pic1small.jpg",
+                "images/prop7pic2small.jpg",
+                "images/prop7pic3small.jpg"
+            ],
+            "floorplan":"images/prop7floorplan.jpg",
             "url": "properties/prop7.html",
             "added": {
                 "month": "July",
