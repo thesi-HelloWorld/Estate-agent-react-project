@@ -1,0 +1,63 @@
+.property-page{
+    padding: 40px 20px;
+    min-height:100vh;
+    justify-content: center;
+    background: linear-gradient( 
+        to bottom,
+        rgba(196, 206, 224, 0.925),
+        rgba(148, 183, 223, 0.925)
+    );
+    min-height: 100vh;
+}
+
+.property-container {
+    width: 800px;
+    background-color: #aa8e2b;
+    border: 2px solid #000;
+    border-radius: 50px;
+    padding: 20px;
+}
+
+/*Pictures of properties*/
+.main-image {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 100%;
+    max-height: 400px;
+}
+
+.thumbnails {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+    margin-bottom: 20px;
+}
+
+/* Pressable tabs */
+.tabs {
+    display:flex;
+    gap: 10px;
+}
+
+.tabs button {
+    background: rgb(78, 130, 219);
+    cursor: pointer;
+    padding: 10px 15px;
+    border: 2px solid #000;
+}
+
+.tabs button:hover {
+    background: rgb(72, 122, 207);
+}
+
+/*Responsiveness*/
+@media (max-width: 768px) {
+  .thumbnails {
+    flex-wrap: wrap;
+  }
+
+  .main-image {
+    max-height: 300px;
+  }
+}

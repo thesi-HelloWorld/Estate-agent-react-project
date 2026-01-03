@@ -2,6 +2,7 @@ import { useParams, Link } from "react-router-dom";
 import propertiesData from "../data/properties.json";
 import 'react-tabs/style/react-tabs.css';
 import { useState } from "react";
+import "../styles/PropertyDetails.css";
 
 
 function PropertyDetails() {
@@ -20,7 +21,7 @@ function PropertyDetails() {
             <Link to="/" className="back-link">Back to search</Link>
 
             <h1>{property.type}</h1>
-            <p>£{property.price.toLocaleString()}</p>
+            <strong>£{property.price.toLocaleString()}</strong>
             <p>{property.location}</p>
 
             <div className="image-section">
@@ -31,7 +32,7 @@ function PropertyDetails() {
             <img
               key={index}
               src={img}
-              alt="Thumbnail"
+              alt="thumbnail"
               className={img === mainImage ? "active-thumb" : ""}
               onClick={() => setMainImage(img)}
             />
