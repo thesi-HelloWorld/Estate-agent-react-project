@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 function PropertyCard({ property, addFavourite }) {
     return(
         <div className="result-card"
-            draggable
+            draggablegit
       onDragStart={(e) =>
         e.dataTransfer.setData("propertyId", property.id)
       }
