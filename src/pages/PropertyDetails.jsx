@@ -58,7 +58,7 @@ function PropertyDetails() {
             {activeTab === "map" && (
             <iframe
                 title="map"
-                src={property.map}
+                src={`https://www.google.com/maps?q=${encodeURIComponent(property.location)}&output=embed`}
                 width="100%"
                 height="300"
                 style={{ border: 0 }}
