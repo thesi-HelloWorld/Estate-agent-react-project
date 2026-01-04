@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import propertiesData from "../data/properties.json";
 import FavouriteList from "../components/FavouriteList";
 import "../styles/SearchPage.css";
-import PropertyDetails from "./PropertyDetails";
 import PropertyCard from "../components/PropertyCard";
 
 function SearchPage() {
@@ -54,6 +53,7 @@ function SearchPage() {
 
   return (
     <div className="search-page">
+        <div className="search-box">
       <h1>Property Search</h1>
 
       <div className="filters">
@@ -101,6 +101,7 @@ function SearchPage() {
           <label>Date To:</label>
           <input type="date" onChange={(e) => setDateTo(e.target.value)} />
         </div>
+      </div>
       </div>
 
         <div>

@@ -1,18 +1,22 @@
-import { Link } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
+import PropertyData from '../data/properties.json';
+import '../styles/PropertyDetails.css';
+import {useState} from 'react';
+
 
 function PropertyCard({ property, addFavourite }) {
     return(
         <div className="result-card"
-            draggablegit
-      onDragStart={(e) =>
-        e.dataTransfer.setData("propertyId", property.id)
-      }
-    >
-      <img
-        src={property.picture}
-        alt={property.type}
-        className="property-image"
-      />
+            draggable
+            onDragStart={(e) =>
+              e.dataTransfer.setData("propertyId", property.id)
+            }
+          >
+            <img
+              src={property.picture}
+              alt={property.type}
+              className="property-image"
+            />
 
       <div className="property-details">
         <h3>{property.type}</h3>

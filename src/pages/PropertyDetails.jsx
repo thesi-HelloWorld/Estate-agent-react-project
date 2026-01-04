@@ -1,23 +1,23 @@
 import { useParams, Link } from "react-router-dom";
-import propertiesData from "../data/properties.json";
 import 'react-tabs/style/react-tabs.css';
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "../styles/PropertyDetails.css";
-
+import PropertiesData from "../data/properties.json";
 
 function PropertyDetails() {
     const {id } = useParams();
-    const property = propertiesData.properties.find((p) => String(p.id) === id);
 
-    const [activeTab, setActiveTab] = useState("description");
-    const [mainImage, setMainImage] = useState(property ? property.images[0] : "");
-
+    const property = PropertiesData.properties.find(p => String (p.id) === id);
     if (!property) {
         return <div>Property not found.</div>;
     }
 
+    const [activeTab, setActiveTab] = useState("description");
+    const [mainImage, setMainImage] = useState(property.images[0]);
+
     return (
         <div className="property-page">
+            <div className="property-container">
             <Link to="/" className="back-link">Back to search</Link>
 
             <h1>{property.type}</h1>
@@ -40,31 +40,32 @@ function PropertyDetails() {
         </div>
       </div>
 
-      <div className="tabs">
-        <button onClick={() => setActiveTab("description")}>Description</button>
-        <button onClick={() => setActiveTab("floorplan")}>Floor Plan</button>
-        <button onClick={() => setActiveTab("map")}>Map</button>
-      </div>
+        <div className="tabs">
+            <button onClick={() => setActiveTab("description")}>Description</button>
+            <button onClick={() => setActiveTab("floorplan")}>Floor Plan</button>
+            <button onClick={() => setActiveTab("map")}>Map</button>
+        </div>
 
-      <div className="tab-content">
-        {activeTab === "description" && (
-          <p>{property.description}</p>
-        )}
+        <div className="tab-content">
+            {activeTab === "description" && (
+            <p>{property.description}</p>
+            )}
 
-        {activeTab === "floorplan" && (
+            {activeTab === "floorplan" && (
           <img src={property.floorplan} alt="Floor Plan" className="floorplan" />
-        )}
+            )}
 
-        {activeTab === "map" && (
-          <iframe
-            title="map"
-            src={property.map}
-            width="100%"
-            height="300"
-            style={{ border: 0 }}
-            loading="lazy"
-          />
-        )}
+            {activeTab === "map" && (
+            <iframe
+                title="map"
+                src={property.map}
+                width="100%"
+                height="300"
+                style={{ border: 0 }}
+                loading="lazy"
+            />
+            )}
+        </div>
       </div>
     </div>
 

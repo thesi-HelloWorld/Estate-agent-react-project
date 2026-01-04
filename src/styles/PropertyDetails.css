@@ -1,27 +1,19 @@
 .property-page{
     padding: 40px 20px;
-    min-height:100vh;
-    justify-content: center;
     background: linear-gradient( 
         to bottom,
         rgba(196, 206, 224, 0.925),
         rgba(148, 183, 223, 0.925)
     );
-    min-height: 100vw
+    min-height: 100vh;
+    width: 100vw;
+    box-sizing: border-box;
 }
 
 .property-container{
-    width:100%;
-    max-width: 900px;
-    padding:20px
-}
-
-.property-container {
-    width: 800px;
-    background-color: #aa8e2b;
-    border: 2px solid #000;
-    border-radius: 50px;
-    padding: 20px;
+    width: 100%;
+    margin: 0 auto;
+    max-width: 1000px;
 }
 
 /*Pictures of properties*/
@@ -40,6 +32,13 @@
     margin-bottom: 20px;
 }
 
+.thumbnails img{
+    width: 80px;
+    height: 50px;
+    object-fit: cover;
+    cursor: pointer;
+}
+
 .floorplan{
     display:block;
     width: 100%;
@@ -56,11 +55,16 @@
     background: rgb(78, 130, 219);
     cursor: pointer;
     padding: 10px 15px;
-    border: 2px solid #000;
+    border: 1px solid #000;
 }
 
 .tabs button:hover {
     background: rgb(72, 122, 207);
+}
+
+.tab-content{
+    max-width: 100%;
+    overflow-x: hidden;
 }
 
 /*Responsiveness*/
