@@ -39,7 +39,7 @@ function PropertyDetails() {
           ))}
         </div>
       </div>
-
+          {/* Buttons for tab navigation */}
         <div className="tabs">
             <button onClick={() => setActiveTab("description")}>Description</button>
             <button onClick={() => setActiveTab("floorplan")}>Floor Plan</button>
@@ -55,6 +55,7 @@ function PropertyDetails() {
           <img src={property.floorplan} alt="Floor Plan" className="floorplan" />
             )}
 
+            {/* Google maps embedded */}
             {activeTab === "map" && (
             <iframe
                 title="map"
