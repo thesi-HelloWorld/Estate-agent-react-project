@@ -1,4 +1,4 @@
-import propertiesData from "../data/properties.json";
+const propertiesData = require("../data/properties.json");
 
 test("JSON contains properties", () => {
   expect(propertiesData.properties.length).toBeGreaterThan(0);
