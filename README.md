@@ -1,3 +1,9 @@
+## GitHub repository link
+https://github.com/thesi-HelloWorld/Estate-agent-react-project
+
+## Depoly link (Vercel)
+https://real-estate-thesanga.vercel.app
+
 # React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.

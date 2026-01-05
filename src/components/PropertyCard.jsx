@@ -1,8 +1,4 @@
-import { useParams, Link } from 'react-router-dom';
-import PropertyData from '../data/properties.json';
-import '../styles/PropertyDetails.css';
-import {useState} from 'react';
-
+import { Link } from 'react-router-dom';
 
 function PropertyCard({ property, addFavourite }) {
     return(
@@ -18,7 +14,7 @@ function PropertyCard({ property, addFavourite }) {
               className="property-image"
             />
 
-      <div className="property-details">
+              <div className="property-details">
         <h3>{property.type}</h3>
 
         <p className="price">

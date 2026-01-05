@@ -51,6 +51,7 @@ function SearchPage() {
     );
   });
 
+  {/* Filteration layouts */}
   return (
     <div className="search-page">
         <div className="search-box">
@@ -107,6 +108,7 @@ function SearchPage() {
         <div>
           <h2>Results</h2>
 
+        {/* Property Cards */}
           <div className="results-grid">
             {filteredProperties.map((property) => (
               <PropertyCard
@@ -117,6 +119,7 @@ function SearchPage() {
             ))}
             </div>
 
+        {/* Displays Favourites List */}
         <FavouriteList
           favourites={favourites}
           properties={propertiesData.properties}
